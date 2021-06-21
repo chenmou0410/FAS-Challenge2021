@@ -59,7 +59,7 @@ def save_csv(dat1,dat2,path):
     f.close()
 
 
-def process_train(root_dir, save):
+def preprocess_train(root_dir, save):
     mtcnn = MTCNN()
     rkp_low = RankPooling(C=1)
     rkp_high = RankPooling(C=1000)
@@ -131,21 +131,8 @@ def process_train(root_dir, save):
 
     print('finish')
 
-if __name__ == '__main__':
-    # root_dir = '/media/data1/AFS/HiFiMask-Challenge/phase1/train/'
-    # save = '/media/data1/AFS/HiFiMask-Challenge/phase1/train_chenmou/'
-    # root_dir = '/media/data1/AFS/HiFiMask-Challenge/phase1/val_chenmou/'
-    # save = '/media/data1/AFS/HiFiMask-Challenge/phase1/val_chenmou/'
-    # root_dir = '/media/data1/AFS/HiFiMask-Challenge/phase2/test/'
-    # save = '/media/data1/AFS/HiFiMask-Challenge/phase2/test_chenmou/'
-
-
-    # root_dir = '/mnt/Data2/chenmou/FAS/HiFiMask-Challenge/phase1/train/'
-    # save = '/mnt/Data2/chenmou/FAS/HiFiMask-Challenge/phase1/train_chenmou/'
-    # root_dir = '/mnt/Data2/chenmou/FAS/HiFiMask-Challenge/phase1/val/'
-    # root_dir = '/mnt/Data2/chenmou/FAS/HiFiMask-Challenge/phase1/val_chenmou/'
-    # save = '/mnt/Data2/chenmou/FAS/HiFiMask-Challenge/phase1/val_chenmou/'
-    root_dir = '/mnt/Data2/chenmou/FAS/HiFiMask-Challenge/phase2/test_chenmou/'
+def preprocess_val():
+    root_dir = '/mnt/Data2/chenmou/FAS/HiFiMask-Challenge/phase2/test/'
     save = '/mnt/Data2/chenmou/FAS/HiFiMask-Challenge/phase2/test_chenmou/'
 
     mtcnn = MTCNN()
@@ -197,9 +184,9 @@ if __name__ == '__main__':
         frames_len = len(rank_frames)
         # print('len',frames_len)
         for j in range(frames_len // 10):
-            if (j+1)*10 > frames_len:
-                f = rank_frames[j*10 :]
-                n = rank_names[j*10 :]
+            if (j + 1) * 10 > frames_len:
+                f = rank_frames[j * 10:]
+                n = rank_names[j * 10:]
             else:
                 f = rank_frames[j * 10: j * 10 + 10]
                 n = rank_names[j * 10: j * 10 + 10]
@@ -213,11 +200,23 @@ if __name__ == '__main__':
                 np.save(n[i], res)
                 # np.save(rank_names[i], coef)
 
-
         idx += 1
         print('finish{}/{}'.format(total, idx))
 
     print('finish')
+
+
+if __name__ == '__main__':
+    # root_dir = '/media/data1/AFS/HiFiMask-Challenge/phase1/train/'
+    # save = '/media/data1/AFS/HiFiMask-Challenge/phase1/train_chenmou/'
+    # root_dir = '/media/data1/AFS/HiFiMask-Challenge/phase1/val_chenmou/'
+    # save = '/media/data1/AFS/HiFiMask-Challenge/phase1/val_chenmou/'
+    # root_dir = '/media/data1/AFS/HiFiMask-Challenge/phase2/test/'
+    # save = '/media/data1/AFS/HiFiMask-Challenge/phase2/test_chenmou/'
+
+    preprocess_train()
+    preprocess_val()
+
 
 
 
