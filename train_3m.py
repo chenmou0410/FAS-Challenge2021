@@ -99,6 +99,7 @@ class cvt_trainer():
         # model = CvT(256, 3, 2).to(self.device)
         dct = FAD_Head(256)
         model = CvT(256, 18, 2)
+        # torch.backends.cudnn.enabled = False
         if self.multi_gpus == True:
             dct =  dct.cuda()
             model = nn.DataParallel(model)
