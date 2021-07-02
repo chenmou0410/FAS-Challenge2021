@@ -6,7 +6,7 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 import torch.nn.functional as F
 import numpy as np
-from modules.cvt_src import CvT
+from modules.cvt import CvT
 from dataset.DCT import FAD_Head
 from dataset.HiFi import HiFi_val
 from utils import AvgrageMeter, accuracy, performances_test,Normaliztion,ToTensor
