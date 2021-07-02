@@ -131,9 +131,7 @@ def preprocess_train(root_dir, save):
 
     print('finish')
 
-def preprocess_val():
-    root_dir = '/mnt/Data2/chenmou/FAS/HiFiMask-Challenge/phase2/test/'
-    save = '/mnt/Data2/chenmou/FAS/HiFiMask-Challenge/phase2/test_chenmou/'
+def preprocess_val(root_dir, save):
 
     mtcnn = MTCNN()
     rkp_low = RankPooling(C=1)
@@ -207,15 +205,15 @@ def preprocess_val():
 
 
 if __name__ == '__main__':
-    # root_dir = '/media/data1/AFS/HiFiMask-Challenge/phase1/train/'
-    # save = '/media/data1/AFS/HiFiMask-Challenge/phase1/train_chenmou/'
-    # root_dir = '/media/data1/AFS/HiFiMask-Challenge/phase1/val_chenmou/'
-    # save = '/media/data1/AFS/HiFiMask-Challenge/phase1/val_chenmou/'
-    # root_dir = '/media/data1/AFS/HiFiMask-Challenge/phase2/test/'
-    # save = '/media/data1/AFS/HiFiMask-Challenge/phase2/test_chenmou/'
-
-    preprocess_train()
-    preprocess_val()
+    root_dir = '/media/data1/AFS/HiFiMask-Challenge/phase1/train/'
+    save = '/media/data1/AFS/HiFiMask-Challenge/phase1/train_chenmou/'
+    preprocess_train(root_dir, save)
+    root_dir = '/media/data1/AFS/HiFiMask-Challenge/phase1/val_chenmou/'
+    save = '/media/data1/AFS/HiFiMask-Challenge/phase1/val_chenmou/'
+    preprocess_val(root_dir, save)
+    root_dir = '/media/data1/AFS/HiFiMask-Challenge/phase2/test/'
+    save = '/media/data1/AFS/HiFiMask-Challenge/phase2/test_chenmou/'
+    preprocess_val(root_dir, save)
 
 
 
