@@ -8,7 +8,7 @@ import torch.nn.functional as F
 import numpy as np
 from modules.cvt import CvT
 from dataset.DCT import FAD_Head
-from dataset.HiFi import HiFi_md_test
+from dataset.HiFi import HiFi_val
 from utils import AvgrageMeter, accuracy, performances_test,Normaliztion,ToTensor
 
 # main function
@@ -35,7 +35,7 @@ def evaluation():
     ###########################################
     with torch.no_grad():
         # test for ACC
-        test_data = HiFi_md_test(root_dir, test_list, transform=transforms.Compose([ToTensor(), Normaliztion()]))
+        test_data = HiFi_val(root_dir, test_list, transform=transforms.Compose([ToTensor(), Normaliztion()]))
         test_loader =DataLoader(test_data, 1, shuffle=False, drop_last=False, num_workers=8)
         score_list = []
 
