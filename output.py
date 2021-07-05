@@ -50,7 +50,7 @@ def evaluation():
             output = torch.softmax(test_output,dim=1)
             out = torch.squeeze(output)
 
-            score_list.append('{} {}\n'.format(frame_name, output.item()))
+            score_list.append('{} {}\n'.format(frame_name[0], out[1].item()))
 
 
 
